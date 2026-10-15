@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>onMyWay — Share your journey. Follow every stop.</title>
+<meta name="description" content="onMyWay is the social network for travellers. Share trips stop by stop, explore friends' routes on the map, and follow any journey in Google Maps or Apple Maps.">
+<meta property="og:title" content="onMyWay — Share your journey. Follow every stop.">
+<meta property="og:description" content="The social network for travellers. Coming soon to iOS & Android.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E3B43">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E3B43;
+  --ink-2:#1C5560;
+  --sand:#F4EBDD;
+  --sand-2:#EADFCC;
+  --coral:#FF6B4A;
+  --coral-dark:#C7401F;
+  --mist:#C9D8D6;
+  --radius:24px;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* Header */
+.site-header{background:var(--ink);color:var(--sand)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.5px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo span{color:var(--coral)}
+.nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav-links a{text-decoration:none;color:var(--mist);font-weight:500}
+.nav-links a:hover{color:var(--sand)}
+.nav-cta{background:var(--coral);color:var(--ink);text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+.nav-cta:hover{background:#ff8466}
+
+/* Hero */
+.hero{background:var(--ink);color:var(--sand);position:relative;overflow:hidden;padding:56px 0 96px}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.badge-soon{display:inline-block;border:1.5px solid var(--mist);color:var(--mist);border-radius:999px;padding:6px 16px;font-size:15px;font-weight:500;margin-bottom:24px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,6.4vw,84px);line-height:1;letter-spacing:-2px;margin:0 0 24px}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero p.lead{font-size:clamp(18px,1.6vw,22px);color:var(--mist);max-width:520px;margin:0 0 36px}
+
+/* Store buttons */
+.stores{display:flex;gap:14px;flex-wrap:wrap}
+.store-btn{display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;text-decoration:none;border-radius:14px;padding:10px 20px 10px 16px;min-height:60px;border:1.5px solid #5b6b6e;transition:transform .15s ease}
+.store-btn:hover{transform:translateY(-2px)}
+.store-btn:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.store-btn svg{width:28px;height:28px;flex:none}
+.store-btn .txt{display:flex;flex-direction:column;line-height:1.1}
+.store-btn .small{font-size:12px;opacity:.85}
+.store-btn .big{font-size:21px;font-weight:700;letter-spacing:-.2px}
+.store-btn.recommended{border-color:var(--coral);box-shadow:0 0 0 3px rgba(255,107,74,.35)}
+.store-btn[aria-disabled="true"]{cursor:default}
+.store-btn[aria-disabled="true"]:hover{transform:none}
+.store-note{font-size:15px;color:var(--mist);margin-top:14px}
+
+/* Phone mockup */
+.phone{width:min(320px,100%);margin-left:auto;margin-right:auto;aspect-ratio:9/18.5;background:#0a2a30;border-radius:44px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.35);border:2px solid var(--ink-2)}
+.screen{width:100%;height:100%;background:var(--sand);border-radius:34px;overflow:hidden;display:flex;flex-direction:column;color:var(--ink)}
+.screen-map{flex:1 1 auto;background:#DCE8E3;position:relative}
+.screen-map svg{width:100%;height:100%}
+.screen-card{padding:18px 18px 22px;display:flex;flex-direction:column;gap:10px}
+.screen-card .t{font-family:var(--display);font-weight:700;font-size:20px}
+.stop{display:flex;align-items:center;gap:10px;font-size:15px}
+.dot{width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--sand);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.dot.c{background:var(--coral-dark)}
+.follow{margin-top:4px;background:var(--coral);color:var(--ink);font-weight:700;font-size:15px;text-align:center;border-radius:999px;padding:10px}
+
+/* Sections */
+section{padding:96px 0}
+.eyebrow{font-weight:700;color:var(--coral-dark);text-transform:uppercase;letter-spacing:1.5px;font-size:14px;margin:0 0 12px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.4vw,56px);line-height:1.05;letter-spacing:-1.5px;margin:0 0 20px}
+.section-lead{max-width:620px;margin:0 0 56px;font-size:20px}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.feature{background:#fff;border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;gap:12px}
+.feature .icon{width:52px;height:52px;border-radius:16px;background:var(--ink);color:var(--sand);display:flex;align-items:center;justify-content:center}
+.feature h3{font-family:var(--display);font-weight:700;font-size:24px;margin:8px 0 0}
+.feature p{margin:0;color:#3f5c61}
+
+.steps{background:var(--sand-2)}
+.step-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;counter-reset:s}
+.step-list li{counter-increment:s;display:flex;flex-direction:column;gap:10px}
+.step-list li::before{content:counter(s);width:56px;height:56px;border-radius:50%;background:var(--coral);color:var(--ink);font-family:var(--display);font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center}
+.step-list h3{font-family:var(--display);font-size:24px;margin:8px 0 0}
+.step-list p{margin:0;color:#3f5c61}
+
+.cta{background:var(--ink);color:var(--sand);text-align:center}
+.cta h2{margin-left:auto;margin-right:auto;max-width:760px}
+.cta p{color:var(--mist);max-width:560px;margin:0 auto 36px;font-size:20px}
+.cta .stores{justify-content:center}
+
+/* Footer */
+footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;flex-wrap:wrap}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--sand)}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .features,.step-list{grid-template-columns:1fr}
+  .nav-links{display:none}
+  section{padding:72px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.store-btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="onMyWay home">
+      <svg width="26" height="34" viewBox="0 0 90 115" aria-hidden="true"><path d="M45 0C20 0 0 20 0 45c0 30 45 70 45 70s45-40 45-70C90 20 70 0 45 0Z" fill="#FF6B4A"/><circle cx="45" cy="44" r="18" fill="#0E3B43"/></svg>
+      <span style="color:var(--sand)">on<span>My</span>Way</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#download">Download</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#download">Get the app</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <svg class="hero-bg" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g stroke="#1C5560" stroke-width="2" fill="none">
+        <path d="M720 -20C820 120 780 260 920 330S1180 420 1260 780"/>
+        <path d="M840 -20C940 100 1020 160 1140 140S1380 60 1460 120"/>
+        <path d="M-20 640C200 560 360 700 560 620S900 560 1100 700"/>
+        <circle cx="1120" cy="380" r="300"/>
+      </g>
+    </svg>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="badge-soon" id="status-badge">Coming soon to iOS &amp; Android</span>
+        <h1>Share your journey. <em>Follow every stop.</em></h1>
+        <p class="lead">onMyWay is the social network for travellers. Turn your trips into routes others can see on a map, and follow any journey in one tap.</p>
+        <div class="stores" data-stores></div>
+        <p class="store-note" data-store-note></p>
+      </div>
+      <div class="phone" role="img" aria-label="onMyWay app showing a trip map with three numbered stops and a Follow this trip button">
+        <div class="screen">
+          <div class="screen-map">
+            <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <g stroke="#C3D6CF" stroke-width="10" fill="none" stroke-linecap="round">
+                <path d="M-10 80H310"/><path d="M-10 210H310"/><path d="M90 -10V310"/><path d="M220 -10V310"/>
+              </g>
+              <path d="M50 250C90 200 100 170 130 150S200 140 230 70" fill="none" stroke="#0E3B43" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 12"/>
+              <circle cx="50" cy="250" r="14" fill="#0E3B43"/><text x="50" y="255" text-anchor="middle" font-size="13" font-weight="700" fill="#F4EBDD" font-family="DM Sans,sans-serif">1</text>
+              <circle cx="130" cy="150" r="14" fill="#0E3B43"/><text x="130" y="155" text-anchor="middle" font-size="13" font-weight="700" fill="#F4EBDD" font-family="DM Sans,sans-serif">2</text>
+              <g transform="translate(212 22)"><path d="M18 0C8 0 0 8 0 18c0 12 18 28 18 28s18-16 18-28C36 8 28 0 18 0Z" fill="#FF6B4A"/><circle cx="18" cy="18" r="7" fill="#0E3B43"/></g>
+            </svg>
+          </div>
+          <div class="screen-card">
+            <div class="t">Sample trip: 3 days in Da Lat</div>
+            <div class="stop"><span class="dot">1</span>Xuan Huong Lake</div>
+            <div class="stop"><span class="dot">2</span>Da Lat Market</div>
+            <div class="stop"><span class="dot c">3</span>Cau Dat Tea Hills</div>
+            <div class="follow">Follow this trip →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <p class="eyebrow">Features</p>
+      <h2>Built for people who love to wander.</h2>
+      <p class="section-lead">Every trip on onMyWay is a set of ordered stops on a real map, so the places you loved become a route anyone can take.</p>
+      <div class="features">
+        <article class="feature">
+          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <h3>Trips, stop by stop</h3>
+          <p>Add places in order, with notes and photos for each stop. Your trip becomes a story on the map.</p>
+        </article>
+        <article class="feature">
+          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></div>
+          <h3>See the route</h3>
+          <p>Every trip shows markers and a route line, so you can see exactly how someone travelled.</p>
+        </article>
+        <article class="feature">
+          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <h3>Follow this trip</h3>
+          <p>Like a route? Tap “Follow this trip” to open every stop in Google Maps or Apple Maps.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="steps">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps. Endless trips.</h2>
+      <p class="section-lead">From your last weekend away to a month-long adventure, sharing takes minutes.</p>
+      <ol class="step-list">
+        <li><h3>Create a trip</h3><p>Pick your stops in the order you visited them.</p></li>
+        <li><h3>Add the details</h3><p>Notes, tips and photos for every place along the way.</p></li>
+        <li><h3>Share and inspire</h3><p>Friends explore your route and follow it on their own trip.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="download" class="cta">
+    <div class="wrap">
+      <h2>Your next trip starts on onMyWay.</h2>
+      <p>Download the app for iPhone or Android and start sharing your journeys.</p>
+      <div class="stores" data-stores></div>
+      <p class="store-note" data-store-note></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="year"></span> onMyWay. All rights reserved.</span>
+    <ul>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Use</a></li>
+      <li><a href="mailto:hello@example.com">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* ==== EDIT THESE when the app is live ==== */
+var APP_STORE_URL  = '';  // e.g. 'https://apps.apple.com/app/idXXXXXXXXXX'
+var PLAY_STORE_URL = '';  // e.g. 'https://play.google.com/store/apps/details?id=com.onmyway.app'
+/* ========================================= */
+
+var appleIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.2 1-4 2.5-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>';
+var playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19l10-9.5z" fill="#34A853"/><path d="M4 2.5l13.2 7.4L14 12.5z" fill="#4285F4"/><path d="M4 21.5l10-9 3.2 2.6z" fill="#EA4335"/><path d="M17.2 9.9l3.3 1.9c.7.4.7 1 0 1.4l-3.3 1.9L14 12.5z" fill="#FBBC04"/></svg>';
+
+function button(url, icon, small, big, label, recommended){
+  var live = !!url;
+  var cls = 'store-btn' + (recommended ? ' recommended' : '');
+  if (live) {
+    return '<a class="' + cls + '" href="' + url + '" target="_blank" rel="noopener" aria-label="' + label + '">' + icon +
+      '<span class="txt"><span class="small">' + small + '</span><span class="big">' + big + '</span></span></a>';
+  }
+  return '<a class="' + cls + '" role="link" aria-disabled="true" aria-label="' + label + ' (coming soon)">' + icon +
+    '<span class="txt"><span class="small">Coming soon on</span><span class="big">' + big + '</span></span></a>';
+}
+
+var ua = navigator.userAgent || '';
+var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+var isAndroid = /Android/i.test(ua);
+
+var apple = button(APP_STORE_URL, appleIcon, 'Download on the', 'App Store', 'Download onMyWay on the App Store', isIOS);
+var play  = button(PLAY_STORE_URL, playIcon, 'Get it on', 'Google Play', 'Get onMyWay on Google Play', isAndroid);
+var html = isAndroid ? play + apple : apple + play;
+
+document.querySelectorAll('[data-stores]').forEach(function(el){ el.innerHTML = html; });
+
+var anyLive = APP_STORE_URL || PLAY_STORE_URL;
+var note = anyLive ? '' : 'We are putting the finishing touches on the app. Follow us on Facebook for launch news.';
+document.querySelectorAll('[data-store-note]').forEach(function(el){ el.textContent = note; });
+if (anyLive) {
+  var badge = document.getElementById('status-badge');
+  badge.textContent = (APP_STORE_URL && PLAY_STORE_URL) ? 'Now on iOS & Android' : (APP_STORE_URL ? 'Now on iOS' : 'Now on Android');
+}
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
