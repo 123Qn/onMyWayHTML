@@ -8,119 +8,137 @@
 <meta property="og:title" content="onMyWay — Share your journey. Follow every stop.">
 <meta property="og:description" content="The social network for travellers. Coming soon to iOS & Android.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0E3B43">
+<meta property="og:image" content="images/logo-tile.png">
+<meta name="theme-color" content="#B6EC3B">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0E3B43;
-  --ink-2:#1C5560;
-  --sand:#F4EBDD;
-  --sand-2:#EADFCC;
-  --coral:#FF6B4A;
-  --coral-dark:#C7401F;
-  --mist:#C9D8D6;
-  --radius:24px;
-  --display:'Bricolage Grotesque',system-ui,sans-serif;
-  --body:'DM Sans',system-ui,sans-serif;
+  --lime:#B6EC3B;
+  --lime-hover:#C6F25E;
+  --lime-soft:#ECF8D6;
+  --green:#2E780B;
+  --ink:#0F120F;
+  --ink-2:#1E231E;
+  --pill:#F4F4EF;
+  --muted:#5B615A;
+  --line:#E4E5DE;
+  --white:#FFFFFF;
+  --radius:28px;
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
 
+/* Brand mark */
+.brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;font-size:26px;letter-spacing:-.6px;color:var(--ink)}
+.brand img{width:44px;height:44px;border-radius:13px;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.brand .my{color:var(--green)}
+
 /* Header */
-.site-header{background:var(--ink);color:var(--sand)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;flex-wrap:wrap}
-.logo{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.5px;text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo span{color:var(--coral)}
-.nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
-.nav-links a{text-decoration:none;color:var(--mist);font-weight:500}
-.nav-links a:hover{color:var(--sand)}
-.nav-cta{background:var(--coral);color:var(--ink);text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
-.nav-cta:hover{background:#ff8466}
+.site-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+.nav-links{display:flex;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav-links a{text-decoration:none;color:var(--muted);font-weight:600;font-size:16px;padding:10px 16px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+.nav-links a:hover{background:var(--pill);color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:background .15s ease,transform .15s ease}
+.btn-lime{background:var(--lime);color:var(--ink)}
+.btn-lime:hover{background:var(--lime-hover)}
+.btn:focus-visible,.store-btn:focus-visible,.nav-links a:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 
 /* Hero */
-.hero{background:var(--ink);color:var(--sand);position:relative;overflow:hidden;padding:56px 0 96px}
-.hero-bg{position:absolute;inset:0;pointer-events:none}
-.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.badge-soon{display:inline-block;border:1.5px solid var(--mist);color:var(--mist);border-radius:999px;padding:6px 16px;font-size:15px;font-weight:500;margin-bottom:24px}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,6.4vw,84px);line-height:1;letter-spacing:-2px;margin:0 0 24px}
-.hero h1 em{font-style:normal;color:var(--coral)}
-.hero p.lead{font-size:clamp(18px,1.6vw,22px);color:var(--mist);max-width:520px;margin:0 0 36px}
+.hero{position:relative;overflow:hidden;padding:64px 0 104px;background:var(--white)}
+.hero::before{content:"";position:absolute;width:720px;height:720px;right:-180px;top:-120px;border-radius:50%;background:var(--lime-soft);z-index:0}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--pill);color:var(--ink);border-radius:999px;padding:8px 16px;font-size:15px;font-weight:600;margin-bottom:24px}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.hero h1{font-weight:800;font-size:clamp(44px,6.2vw,80px);line-height:1.02;letter-spacing:-2.5px;margin:0 0 24px}
+.hero h1 .hl{position:relative;white-space:nowrap;z-index:0}
+.hero h1 .hl::after{content:"";position:absolute;left:-4px;right:-4px;bottom:.06em;height:.36em;background:var(--lime);border-radius:8px;z-index:-1}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--muted);max-width:520px;margin:0 0 36px}
 
 /* Store buttons */
-.stores{display:flex;gap:14px;flex-wrap:wrap}
-.store-btn{display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;text-decoration:none;border-radius:14px;padding:10px 20px 10px 16px;min-height:60px;border:1.5px solid #5b6b6e;transition:transform .15s ease}
+.stores{display:flex;gap:12px;flex-wrap:wrap}
+.store-btn{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;text-decoration:none;border-radius:16px;padding:10px 22px 10px 16px;min-height:60px;transition:transform .15s ease}
 .store-btn:hover{transform:translateY(-2px)}
-.store-btn:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
 .store-btn svg{width:28px;height:28px;flex:none}
 .store-btn .txt{display:flex;flex-direction:column;line-height:1.1}
-.store-btn .small{font-size:12px;opacity:.85}
-.store-btn .big{font-size:21px;font-weight:700;letter-spacing:-.2px}
-.store-btn.recommended{border-color:var(--coral);box-shadow:0 0 0 3px rgba(255,107,74,.35)}
+.store-btn .small{font-size:12px;opacity:.8}
+.store-btn .big{font-size:20px;font-weight:700;letter-spacing:-.2px}
+.store-btn.recommended{box-shadow:0 0 0 3px var(--lime)}
 .store-btn[aria-disabled="true"]{cursor:default}
 .store-btn[aria-disabled="true"]:hover{transform:none}
-.store-note{font-size:15px;color:var(--mist);margin-top:14px}
+.store-note{font-size:15px;color:var(--muted);margin:14px 0 0}
 
-/* Phone frame with real screenshots */
-.phone{margin:0;width:min(320px,100%);background:#0b0b0b;border-radius:46px;padding:11px;box-shadow:0 30px 70px rgba(0,0,0,.35),inset 0 0 0 2px #2a2a2a;position:relative}
-.phone::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);width:76px;height:20px;border-radius:999px;background:#0b0b0b;z-index:2}
+/* Phone frame */
+.phone{margin:0;width:min(320px,100%);background:var(--ink);border-radius:46px;padding:11px;box-shadow:0 30px 70px rgba(15,18,15,.22),inset 0 0 0 2px #2a2f2a;position:relative}
+.phone::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);width:76px;height:20px;border-radius:999px;background:var(--ink);z-index:2}
 .phone img{width:100%;height:auto;border-radius:36px;background:#fff;padding-top:34px}
 .hero-phone{margin-left:auto;margin-right:auto;transform:rotate(2deg)}
-
-/* Screens gallery */
-.screens{background:var(--ink);color:var(--sand);overflow:hidden}
-.screens .eyebrow{color:var(--coral)}
-.screens .section-lead{color:var(--mist)}
-.screen-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;align-items:start}
-.screen-item{margin:0;display:flex;flex-direction:column;gap:20px}
-.screen-item .phone{width:100%;box-shadow:0 24px 60px rgba(0,0,0,.4),inset 0 0 0 2px #2a2a2a}
-.screen-item:nth-child(even){margin-top:56px}
-.screen-item figcaption h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 6px;color:var(--sand)}
-.screen-item figcaption p{margin:0;color:var(--mist);font-size:16px;line-height:1.5}
-.screen{width:100%;height:100%;background:var(--sand);border-radius:34px;overflow:hidden;display:flex;flex-direction:column;color:var(--ink)}
-.screen-map{flex:1 1 auto;background:#DCE8E3;position:relative}
-.screen-map svg{width:100%;height:100%}
-.screen-card{padding:18px 18px 22px;display:flex;flex-direction:column;gap:10px}
-.screen-card .t{font-family:var(--display);font-weight:700;font-size:20px}
-.stop{display:flex;align-items:center;gap:10px;font-size:15px}
-.dot{width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--sand);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
-.dot.c{background:var(--coral-dark)}
-.follow{margin-top:4px;background:var(--coral);color:var(--ink);font-weight:700;font-size:15px;text-align:center;border-radius:999px;padding:10px}
+.hero-badge{position:absolute;z-index:3;background:#fff;border-radius:20px;box-shadow:0 14px 40px rgba(15,18,15,.14);padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
+.hero-badge.b1{left:-8px;top:22%}
+.hero-badge.b2{right:-4px;bottom:16%}
+.hero-badge .ic{width:36px;height:36px;border-radius:12px;background:var(--lime);display:flex;align-items:center;justify-content:center;flex:none}
+.hero-badge small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.phone-wrap{position:relative;max-width:380px;margin-left:auto;margin-right:auto;width:100%}
 
 /* Sections */
-section{padding:96px 0}
-.eyebrow{font-weight:700;color:var(--coral-dark);text-transform:uppercase;letter-spacing:1.5px;font-size:14px;margin:0 0 12px}
-h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.4vw,56px);line-height:1.05;letter-spacing:-1.5px;margin:0 0 20px}
-.section-lead{max-width:620px;margin:0 0 56px;font-size:20px}
-.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.feature{background:#fff;border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;gap:12px}
-.feature .icon{width:52px;height:52px;border-radius:16px;background:var(--ink);color:var(--sand);display:flex;align-items:center;justify-content:center}
-.feature h3{font-family:var(--display);font-weight:700;font-size:24px;margin:8px 0 0}
-.feature p{margin:0;color:#3f5c61}
+section{padding:104px 0}
+.eyebrow{display:inline-block;font-weight:700;color:var(--green);background:var(--lime-soft);border-radius:999px;padding:6px 14px;font-size:14px;margin:0 0 18px}
+h2{font-weight:800;font-size:clamp(34px,4.4vw,54px);line-height:1.06;letter-spacing:-1.6px;margin:0 0 18px}
+.section-lead{max-width:620px;margin:0 0 56px;font-size:20px;color:var(--muted)}
 
-.steps{background:var(--sand-2)}
-.step-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;counter-reset:s}
-.step-list li{counter-increment:s;display:flex;flex-direction:column;gap:10px}
-.step-list li::before{content:counter(s);width:56px;height:56px;border-radius:50%;background:var(--coral);color:var(--ink);font-family:var(--display);font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center}
-.step-list h3{font-family:var(--display);font-size:24px;margin:8px 0 0}
-.step-list p{margin:0;color:#3f5c61}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.feature{background:var(--pill);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;gap:10px}
+.feature .icon{width:56px;height:56px;border-radius:18px;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.feature h3{font-weight:800;font-size:23px;letter-spacing:-.4px;margin:12px 0 0}
+.feature p{margin:0;color:var(--muted)}
 
-.cta{background:var(--ink);color:var(--sand);text-align:center}
-.cta h2{margin-left:auto;margin-right:auto;max-width:760px}
-.cta p{color:var(--mist);max-width:560px;margin:0 auto 36px;font-size:20px}
-.cta .stores{justify-content:center}
+/* Screens gallery */
+.screens{background:var(--ink);color:#fff;overflow:hidden}
+.screens .eyebrow{background:var(--lime);color:var(--ink)}
+.screens .section-lead{color:#B9BEB8}
+.screen-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;align-items:start}
+.screen-item{margin:0;display:flex;flex-direction:column;gap:22px}
+.screen-item .phone{width:100%;box-shadow:0 24px 60px rgba(0,0,0,.5),inset 0 0 0 2px #2a2f2a}
+.screen-item:nth-child(even){margin-top:56px}
+.screen-item figcaption h3{font-weight:800;font-size:21px;letter-spacing:-.3px;margin:0 0 6px;color:#fff}
+.screen-item figcaption p{margin:0;color:#B9BEB8;font-size:16px;line-height:1.5}
+.screen-item .num{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--lime);color:var(--ink);font-weight:800;font-size:14px;align-items:center;justify-content:center;margin-bottom:10px}
+
+/* Steps */
+.step-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
+.step-list li{counter-increment:s;display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.step-list li::before{content:counter(s);width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--lime);font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center}
+.step-list h3{font-weight:800;font-size:23px;letter-spacing:-.4px;margin:12px 0 0}
+.step-list p{margin:0;color:var(--muted)}
+
+/* CTA */
+.cta{padding:0 0 104px}
+.cta-card{background:var(--lime);border-radius:40px;padding:72px 32px;text-align:center;position:relative;overflow:hidden}
+.cta-card img.mark{width:96px;height:96px;border-radius:28px;margin:0 auto 24px;box-shadow:0 12px 30px rgba(15,18,15,.18)}
+.cta-card h2{max-width:720px;margin-left:auto;margin-right:auto}
+.cta-card p{color:#2B3326;max-width:540px;margin:0 auto 32px;font-size:20px}
+.cta-card .stores{justify-content:center}
+.cta-card .store-note{color:#2B3326}
+.cta-card .store-btn.recommended{box-shadow:0 0 0 3px #fff}
 
 /* Footer */
-footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
+footer{background:var(--ink);color:#B9BEB8;padding:40px 0;font-size:15px}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.foot .brand{color:#fff;font-size:20px}
+.foot .brand img{width:34px;height:34px;border-radius:10px;box-shadow:none}
+.foot .brand .my{color:var(--lime)}
 .foot ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;flex-wrap:wrap}
 .foot a{text-decoration:none}
-.foot a:hover{color:var(--sand)}
+.foot ul a:hover{color:#fff}
 
 @media (max-width:1000px){
   .screen-row{grid-template-columns:repeat(4,minmax(240px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;margin:0 -24px;padding-left:24px;padding-right:24px}
@@ -132,51 +150,56 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
   .features,.step-list{grid-template-columns:1fr}
   .nav-links{display:none}
   section{padding:72px 0}
+  .cta{padding:0 0 72px}
+  .hero::before{width:480px;height:480px;right:-200px;top:auto;bottom:-80px}
+  .hero-badge.b1{left:0}
+  .hero-badge.b2{right:0}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.store-btn{transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.store-btn,.btn{transition:none}}
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap nav">
-    <a class="logo" href="#top" aria-label="onMyWay home">
-      <svg width="26" height="34" viewBox="0 0 90 115" aria-hidden="true"><path d="M45 0C20 0 0 20 0 45c0 30 45 70 45 70s45-40 45-70C90 20 70 0 45 0Z" fill="#FF6B4A"/><circle cx="45" cy="44" r="18" fill="#0E3B43"/></svg>
-      <span style="color:var(--sand)">on<span>My</span>Way</span>
+    <a class="brand" href="#top" aria-label="onMyWay home">
+      <img src="images/logo-tile.png" width="44" height="44" alt="">
+      <span>on<span class="my">My</span>Way</span>
     </a>
     <nav aria-label="Main">
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#screens">Screens</a></li>
         <li><a href="#how">How it works</a></li>
-        <li><a href="#download">Download</a></li>
       </ul>
     </nav>
-    <a class="nav-cta" href="#download">Get the app</a>
+    <a class="btn btn-lime" href="#download">Get the app</a>
   </div>
 </header>
 
 <main id="top">
   <div class="hero">
-    <svg class="hero-bg" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g stroke="#1C5560" stroke-width="2" fill="none">
-        <path d="M720 -20C820 120 780 260 920 330S1180 420 1260 780"/>
-        <path d="M840 -20C940 100 1020 160 1140 140S1380 60 1460 120"/>
-        <path d="M-20 640C200 560 360 700 560 620S900 560 1100 700"/>
-        <circle cx="1120" cy="380" r="300"/>
-      </g>
-    </svg>
     <div class="wrap hero-grid">
       <div>
-        <span class="badge-soon" id="status-badge">Coming soon to iOS &amp; Android</span>
-        <h1>Share your journey. <em>Follow every stop.</em></h1>
+        <span class="chip"><span class="dot" aria-hidden="true"></span><span id="status-badge">Coming soon to iOS &amp; Android</span></span>
+        <h1>Share your journey. <span class="hl">Follow every stop.</span></h1>
         <p class="lead">onMyWay is the social network for travellers. Turn your trips into routes others can see on a map, and follow any journey in one tap.</p>
         <div class="stores" data-stores></div>
         <p class="store-note" data-store-note></p>
       </div>
-      <figure class="phone hero-phone">
-        <img src="images/screen-feed.webp" width="752" height="1508" alt="onMyWay home feed showing a Blue Mountains day trip post with likes and comments">
-      </figure>
+      <div class="phone-wrap">
+        <figure class="phone hero-phone">
+          <img src="images/screen-feed.webp" width="752" height="1508" alt="onMyWay home feed showing a Blue Mountains day trip post with likes and comments">
+        </figure>
+        <div class="hero-badge b1" aria-hidden="true">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F120F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <span>5 stops<small>Blue Mountains</small></span>
+        </div>
+        <div class="hero-badge b2" aria-hidden="true">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F120F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span>Follow this trip<small>Opens in Maps</small></span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -187,19 +210,19 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
       <p class="section-lead">Every trip on onMyWay is a set of ordered stops on a real map, so the places you loved become a route anyone can take.</p>
       <div class="features">
         <article class="feature">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
           <h3>Trips, stop by stop</h3>
-          <p>Add places in order, with notes and photos for each stop. Your trip becomes a story on the map.</p>
+          <p>Add up to 20 places in order, with notes and photos for each stop. Your trip becomes a story on the map.</p>
         </article>
         <article class="feature">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></div>
+          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></div>
           <h3>See the route</h3>
-          <p>Every trip shows markers and a route line, so you can see exactly how someone travelled.</p>
+          <p>Every trip shows markers and a route line by car, on foot or by bike, so you can see exactly how someone travelled.</p>
         </article>
         <article class="feature">
-          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          <h3>Follow this trip</h3>
-          <p>Like a route? Tap “Follow this trip” to open every stop in Google Maps or Apple Maps.</p>
+          <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+          <h3>Like, comment, follow</h3>
+          <p>React to trips in your feed, then tap “Follow this trip” to open every stop in Google Maps or Apple Maps.</p>
         </article>
       </div>
     </div>
@@ -213,25 +236,25 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
       <div class="screen-row">
         <figure class="screen-item">
           <div class="phone"><img src="images/screen-feed.webp" width="752" height="1508" loading="lazy" alt="Home feed with a shared Blue Mountains day trip, likes and comments"></div>
-          <figcaption><h3>Your travel feed</h3><p>See trips from people you follow. Like, comment and repost the ones you love.</p></figcaption>
+          <figcaption><span class="num">1</span><h3>Your travel feed</h3><p>See trips from people you follow. Like, comment and repost the ones you love.</p></figcaption>
         </figure>
         <figure class="screen-item">
           <div class="phone"><img src="images/screen-new-trip.webp" width="752" height="1508" loading="lazy" alt="New trip screen with public or private visibility, travel mode options and a stops list"></div>
-          <figcaption><h3>Plan a trip in minutes</h3><p>Make it public or private, pick driving, walking or cycling, and add up to 20 stops.</p></figcaption>
+          <figcaption><span class="num">2</span><h3>Plan a trip in minutes</h3><p>Make it public or private, pick driving, walking or cycling, and add up to 20 stops.</p></figcaption>
         </figure>
         <figure class="screen-item">
           <div class="phone"><img src="images/screen-profile.webp" width="752" height="1508" loading="lazy" alt="Profile screen showing trips, stops and photo counts with a grid of trip photos"></div>
-          <figcaption><h3>Your travel profile</h3><p>All your trips, stops and photos in one place, with saved trips for later.</p></figcaption>
+          <figcaption><span class="num">3</span><h3>Your travel profile</h3><p>All your trips, stops and photos in one place, with saved trips for later.</p></figcaption>
         </figure>
         <figure class="screen-item">
           <div class="phone"><img src="images/screen-splash.webp" width="752" height="1488" loading="lazy" alt="onMyWay launch screen with the suitcase logo"></div>
-          <figcaption><h3>Ready when you are</h3><p>Open the app and pick up right where your last journey left off.</p></figcaption>
+          <figcaption><span class="num">4</span><h3>Ready when you are</h3><p>Open the app and pick up right where your last journey left off.</p></figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <section id="how" class="steps">
+  <section id="how">
     <div class="wrap">
       <p class="eyebrow">How it works</p>
       <h2>Three steps. Endless trips.</h2>
@@ -244,24 +267,31 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
     </div>
   </section>
 
-  <section id="download" class="cta">
+  <div id="download" class="cta">
     <div class="wrap">
-      <h2>Your next trip starts on onMyWay.</h2>
-      <p>Download the app for iPhone or Android and start sharing your journeys.</p>
-      <div class="stores" data-stores></div>
-      <p class="store-note" data-store-note></p>
+      <div class="cta-card">
+        <img class="mark" src="images/logo-tile.png" width="96" height="96" alt="onMyWay app icon">
+        <h2>Your next trip starts on onMyWay.</h2>
+        <p>Download the app for iPhone or Android and start sharing your journeys.</p>
+        <div class="stores" data-stores></div>
+        <p class="store-note" data-store-note></p>
+      </div>
     </div>
-  </section>
+  </div>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="year"></span> onMyWay. All rights reserved.</span>
+    <a class="brand" href="#top" aria-label="onMyWay home">
+      <img src="images/logo-tile.png" width="34" height="34" alt="">
+      <span>on<span class="my">My</span>Way</span>
+    </a>
     <ul>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Use</a></li>
-      <li><a href="mailto:hello@example.com">Contact</a></li>
+      <li><a href="mailto:hello@getonmyway.app">Contact</a></li>
     </ul>
+    <span>© <span id="year">2026</span> onMyWay</span>
   </div>
 </footer>
 
@@ -275,9 +305,8 @@ var appleIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
 var playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19l10-9.5z" fill="#34A853"/><path d="M4 2.5l13.2 7.4L14 12.5z" fill="#4285F4"/><path d="M4 21.5l10-9 3.2 2.6z" fill="#EA4335"/><path d="M17.2 9.9l3.3 1.9c.7.4.7 1 0 1.4l-3.3 1.9L14 12.5z" fill="#FBBC04"/></svg>';
 
 function button(url, icon, small, big, label, recommended){
-  var live = !!url;
   var cls = 'store-btn' + (recommended ? ' recommended' : '');
-  if (live) {
+  if (url) {
     return '<a class="' + cls + '" href="' + url + '" target="_blank" rel="noopener" aria-label="' + label + '">' + icon +
       '<span class="txt"><span class="small">' + small + '</span><span class="big">' + big + '</span></span></a>';
   }
@@ -292,15 +321,13 @@ var isAndroid = /Android/i.test(ua);
 var apple = button(APP_STORE_URL, appleIcon, 'Download on the', 'App Store', 'Download onMyWay on the App Store', isIOS);
 var play  = button(PLAY_STORE_URL, playIcon, 'Get it on', 'Google Play', 'Get onMyWay on Google Play', isAndroid);
 var html = isAndroid ? play + apple : apple + play;
-
 document.querySelectorAll('[data-stores]').forEach(function(el){ el.innerHTML = html; });
 
 var anyLive = APP_STORE_URL || PLAY_STORE_URL;
 var note = anyLive ? '' : 'We are putting the finishing touches on the app. Follow us on Facebook for launch news.';
 document.querySelectorAll('[data-store-note]').forEach(function(el){ el.textContent = note; });
 if (anyLive) {
-  var badge = document.getElementById('status-badge');
-  badge.textContent = (APP_STORE_URL && PLAY_STORE_URL) ? 'Now on iOS & Android' : (APP_STORE_URL ? 'Now on iOS' : 'Now on Android');
+  document.getElementById('status-badge').textContent = (APP_STORE_URL && PLAY_STORE_URL) ? 'Now on iOS & Android' : (APP_STORE_URL ? 'Now on iOS' : 'Now on Android');
 }
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
