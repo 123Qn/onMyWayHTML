@@ -388,8 +388,8 @@ var html = isAndroid ? play + apple : apple + play;
 document.querySelectorAll('[data-stores]').forEach(function(el){ el.innerHTML = html; });
 
 var anyLive = APP_STORE_URL || PLAY_STORE_URL;
-var note = anyLive ? '' : 'We are putting the finishing touches on the app. Follow us on Facebook for launch news.';
-document.querySelectorAll('[data-store-note]').forEach(function(el){ el.textContent = note; });
+var note = anyLive ? '' : 'We are putting the finishing touches on the app. Follow us on <a href="https://www.facebook.com/profile.php?id=61591662908463" target="_blank" rel="noopener">Facebook</a> for launch news.';
+document.querySelectorAll('[data-store-note]').forEach(function(el){ el.innerHTML = note; });
 if (anyLive) {
   document.getElementById('status-badge').textContent = (APP_STORE_URL && PLAY_STORE_URL) ? 'Now on iOS & Android' : (APP_STORE_URL ? 'Now on iOS' : 'Now on Android');
 }
