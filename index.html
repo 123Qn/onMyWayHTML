@@ -130,6 +130,26 @@ h2{font-weight:800;font-size:clamp(34px,4.4vw,54px);line-height:1.06;letter-spac
 .cta-card .store-note{color:#2B3326}
 .cta-card .store-btn.recommended{box-shadow:0 0 0 3px #fff}
 
+/* TEMPORARY: beta tester sign-up (remove after the first testing stage) */
+.beta{padding:0 0 24px;scroll-margin-top:90px}
+.beta-card{background:var(--ink);color:#fff;border-radius:40px;padding:56px;display:flex;flex-wrap:wrap;gap:48px;align-items:center}
+.beta-copy{flex:999 1 420px;min-width:0}
+.beta-copy .pill{display:inline-flex;align-items:center;gap:10px;background:#262B26;border-radius:999px;padding:8px 16px;font-weight:700;font-size:15px;margin-bottom:20px}
+.beta-copy .pill span{width:10px;height:10px;border-radius:50%;background:var(--lime)}
+.beta-copy h2{color:#fff;margin-bottom:14px}
+.beta-copy h2 .hl{background:var(--lime);color:var(--ink);border-radius:12px;padding:0 10px;white-space:nowrap}
+.beta-copy p{color:#B9BEB8;font-size:19px;margin:0 0 28px;max-width:560px}
+.beta-steps{list-style:none;margin:0 0 32px;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.beta-steps li{display:flex;align-items:center;gap:10px;background:#1E231E;border-radius:999px;padding:8px 18px 8px 8px;font-weight:600;font-size:16px}
+.beta-steps b{width:30px;height:30px;border-radius:50%;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:14px}
+.beta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.beta-actions .btn{min-height:56px;font-size:18px;padding:14px 30px}
+.beta-actions small{color:#B9BEB8;font-size:15px}
+.beta-phone{flex:1 1 220px;max-width:260px;margin:0 auto}
+.beta-phone .phone{width:100%;transform:rotate(4deg);box-shadow:0 24px 60px rgba(0,0,0,.5),inset 0 0 0 2px #2a2f2a}
+.btn[aria-disabled="true"]{opacity:.6;cursor:default}
+@media (max-width:900px){.beta-card{padding:36px 24px;border-radius:32px}.beta-phone{display:none}}
+
 /* Footer */
 footer{background:var(--ink);color:#B9BEB8;padding:40px 0;font-size:15px}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
@@ -173,7 +193,7 @@ footer{background:var(--ink);color:#B9BEB8;padding:40px 0;font-size:15px}
         <li><a href="#how">How it works</a></li>
       </ul>
     </nav>
-    <a class="btn btn-lime" href="#download">Get the app</a>
+    <a class="btn btn-lime" href="#beta">Join the beta</a>
   </div>
 </header>
 
@@ -202,6 +222,32 @@ footer{background:var(--ink);color:#B9BEB8;padding:40px 0;font-size:15px}
       </div>
     </div>
   </div>
+
+  <!-- TEMPORARY: beta tester sign-up. Remove this block after the first testing stage. -->
+  <div id="beta" class="beta">
+    <div class="wrap">
+      <div class="beta-card">
+        <div class="beta-copy">
+          <span class="pill"><span aria-hidden="true"></span>Beta testers wanted</span>
+          <h2>We’re looking for <span class="hl">10–20</span> testers</h2>
+          <p>Be one of the first to try onMyWay in our first testing stage, and help shape the app for travellers. Available for iPhone and Android.</p>
+          <ol class="beta-steps">
+            <li><b>1</b>Fill in the form</li>
+            <li><b>2</b>We contact you</li>
+            <li><b>3</b>Start testing</li>
+          </ol>
+          <div class="beta-actions">
+            <a class="btn btn-lime" id="beta-form-btn" href="#" target="_blank" rel="noopener">Fill in the form →</a>
+            <small id="beta-note">Limited spots. Takes about 2 minutes.</small>
+          </div>
+        </div>
+        <div class="beta-phone" aria-hidden="true">
+          <div class="phone"><img src="images/screen-new-trip.webp" width="752" height="1508" loading="lazy" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /TEMPORARY -->
 
   <section id="features">
     <div class="wrap">
@@ -296,6 +342,24 @@ footer{background:var(--ink);color:#B9BEB8;padding:40px 0;font-size:15px}
 </footer>
 
 <script>
+/* ==== TEMPORARY: paste your tester sign-up form link here ==== */
+var BETA_FORM_URL = '';  // e.g. 'https://forms.gle/XXXXXXXXXXXX'
+/* ============================================================== */
+(function(){
+  var btn = document.getElementById('beta-form-btn');
+  if (!btn) return;
+  if (BETA_FORM_URL) {
+    btn.href = BETA_FORM_URL;
+  } else {
+    btn.removeAttribute('href');
+    btn.removeAttribute('target');
+    btn.setAttribute('role','link');
+    btn.setAttribute('aria-disabled','true');
+    btn.textContent = 'Form opening soon';
+    document.getElementById('beta-note').textContent = 'Sign-ups open shortly. Check back soon or follow us on Facebook.';
+  }
+})();
+
 /* ==== EDIT THESE when the app is live ==== */
 var APP_STORE_URL  = '';  // e.g. 'https://apps.apple.com/app/idXXXXXXXXXX'
 var PLAY_STORE_URL = '';  // e.g. 'https://play.google.com/store/apps/details?id=com.onmyway.app'
