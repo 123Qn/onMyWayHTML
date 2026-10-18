@@ -66,8 +66,22 @@ a{color:inherit}
 .store-btn[aria-disabled="true"]:hover{transform:none}
 .store-note{font-size:15px;color:var(--mist);margin-top:14px}
 
-/* Phone mockup */
-.phone{width:min(320px,100%);margin-left:auto;margin-right:auto;aspect-ratio:9/18.5;background:#0a2a30;border-radius:44px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.35);border:2px solid var(--ink-2)}
+/* Phone frame with real screenshots */
+.phone{margin:0;width:min(320px,100%);background:#0b0b0b;border-radius:46px;padding:11px;box-shadow:0 30px 70px rgba(0,0,0,.35),inset 0 0 0 2px #2a2a2a;position:relative}
+.phone::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);width:76px;height:20px;border-radius:999px;background:#0b0b0b;z-index:2}
+.phone img{width:100%;height:auto;border-radius:36px;background:#fff;padding-top:34px}
+.hero-phone{margin-left:auto;margin-right:auto;transform:rotate(2deg)}
+
+/* Screens gallery */
+.screens{background:var(--ink);color:var(--sand);overflow:hidden}
+.screens .eyebrow{color:var(--coral)}
+.screens .section-lead{color:var(--mist)}
+.screen-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;align-items:start}
+.screen-item{margin:0;display:flex;flex-direction:column;gap:20px}
+.screen-item .phone{width:100%;box-shadow:0 24px 60px rgba(0,0,0,.4),inset 0 0 0 2px #2a2a2a}
+.screen-item:nth-child(even){margin-top:56px}
+.screen-item figcaption h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 6px;color:var(--sand)}
+.screen-item figcaption p{margin:0;color:var(--mist);font-size:16px;line-height:1.5}
 .screen{width:100%;height:100%;background:var(--sand);border-radius:34px;overflow:hidden;display:flex;flex-direction:column;color:var(--ink)}
 .screen-map{flex:1 1 auto;background:#DCE8E3;position:relative}
 .screen-map svg{width:100%;height:100%}
@@ -108,6 +122,11 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
 .foot a{text-decoration:none}
 .foot a:hover{color:var(--sand)}
 
+@media (max-width:1000px){
+  .screen-row{grid-template-columns:repeat(4,minmax(240px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;margin:0 -24px;padding-left:24px;padding-right:24px}
+  .screen-item{scroll-snap-align:center}
+  .screen-item:nth-child(even){margin-top:0}
+}
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .features,.step-list{grid-template-columns:1fr}
@@ -128,6 +147,7 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
     <nav aria-label="Main">
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
+        <li><a href="#screens">Screens</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#download">Download</a></li>
       </ul>
@@ -154,28 +174,9 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
         <div class="stores" data-stores></div>
         <p class="store-note" data-store-note></p>
       </div>
-      <div class="phone" role="img" aria-label="onMyWay app showing a trip map with three numbered stops and a Follow this trip button">
-        <div class="screen">
-          <div class="screen-map">
-            <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <g stroke="#C3D6CF" stroke-width="10" fill="none" stroke-linecap="round">
-                <path d="M-10 80H310"/><path d="M-10 210H310"/><path d="M90 -10V310"/><path d="M220 -10V310"/>
-              </g>
-              <path d="M50 250C90 200 100 170 130 150S200 140 230 70" fill="none" stroke="#0E3B43" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 12"/>
-              <circle cx="50" cy="250" r="14" fill="#0E3B43"/><text x="50" y="255" text-anchor="middle" font-size="13" font-weight="700" fill="#F4EBDD" font-family="DM Sans,sans-serif">1</text>
-              <circle cx="130" cy="150" r="14" fill="#0E3B43"/><text x="130" y="155" text-anchor="middle" font-size="13" font-weight="700" fill="#F4EBDD" font-family="DM Sans,sans-serif">2</text>
-              <g transform="translate(212 22)"><path d="M18 0C8 0 0 8 0 18c0 12 18 28 18 28s18-16 18-28C36 8 28 0 18 0Z" fill="#FF6B4A"/><circle cx="18" cy="18" r="7" fill="#0E3B43"/></g>
-            </svg>
-          </div>
-          <div class="screen-card">
-            <div class="t">Sample trip: 3 days in Da Lat</div>
-            <div class="stop"><span class="dot">1</span>Xuan Huong Lake</div>
-            <div class="stop"><span class="dot">2</span>Da Lat Market</div>
-            <div class="stop"><span class="dot c">3</span>Cau Dat Tea Hills</div>
-            <div class="follow">Follow this trip →</div>
-          </div>
-        </div>
-      </div>
+      <figure class="phone hero-phone">
+        <img src="images/screen-feed.webp" width="752" height="1508" alt="onMyWay home feed showing a Blue Mountains day trip post with likes and comments">
+      </figure>
     </div>
   </div>
 
@@ -200,6 +201,32 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
           <h3>Follow this trip</h3>
           <p>Like a route? Tap “Follow this trip” to open every stop in Google Maps or Apple Maps.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" class="screens">
+    <div class="wrap">
+      <p class="eyebrow">Inside the app</p>
+      <h2>Take a look around.</h2>
+      <p class="section-lead">A first look at onMyWay, from your travel feed to planning a new trip.</p>
+      <div class="screen-row">
+        <figure class="screen-item">
+          <div class="phone"><img src="images/screen-feed.webp" width="752" height="1508" loading="lazy" alt="Home feed with a shared Blue Mountains day trip, likes and comments"></div>
+          <figcaption><h3>Your travel feed</h3><p>See trips from people you follow. Like, comment and repost the ones you love.</p></figcaption>
+        </figure>
+        <figure class="screen-item">
+          <div class="phone"><img src="images/screen-new-trip.webp" width="752" height="1508" loading="lazy" alt="New trip screen with public or private visibility, travel mode options and a stops list"></div>
+          <figcaption><h3>Plan a trip in minutes</h3><p>Make it public or private, pick driving, walking or cycling, and add up to 20 stops.</p></figcaption>
+        </figure>
+        <figure class="screen-item">
+          <div class="phone"><img src="images/screen-profile.webp" width="752" height="1508" loading="lazy" alt="Profile screen showing trips, stops and photo counts with a grid of trip photos"></div>
+          <figcaption><h3>Your travel profile</h3><p>All your trips, stops and photos in one place, with saved trips for later.</p></figcaption>
+        </figure>
+        <figure class="screen-item">
+          <div class="phone"><img src="images/screen-splash.webp" width="752" height="1488" loading="lazy" alt="onMyWay launch screen with the suitcase logo"></div>
+          <figcaption><h3>Ready when you are</h3><p>Open the app and pick up right where your last journey left off.</p></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -233,7 +260,7 @@ footer{background:#0a2a30;color:var(--mist);padding:40px 0;font-size:15px}
     <ul>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Use</a></li>
-      <li><a href="mailto:onmyway.app.contact@gmail.com">Contact</a></li>
+      <li><a href="mailto:hello@example.com">Contact</a></li>
     </ul>
   </div>
 </footer>
